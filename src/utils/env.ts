@@ -7,3 +7,4 @@ export const dbName = process.env.DB_NAME;
 export const user = process.env.USER;
 export const host = process.env.HOST;
 export const password = process.env.PASSWORD;
+export const jwtSecret = process.env.JWT_SECRET;

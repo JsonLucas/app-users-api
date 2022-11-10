@@ -1,0 +1,1 @@
+export class RequestErro extends Error{}
