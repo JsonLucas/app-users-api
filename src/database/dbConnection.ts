@@ -8,6 +8,5 @@ export const dbConnection = new Pool({
 	port: Number(dbPort),
 	user,
 	password,
-	host,
-	ssl: { rejectUnauthorized: false }
+	host
 });

@@ -1,14 +1,14 @@
 import { IQueryHelper } from "../helpers/dbQueries";
 import { IQueryResponse } from "../interfaces/query-response";
-import { IUsersRepository, SignUp } from "../interfaces/users";
+import { IUsersRepository, SignUp } from "../interfaces/entities/users";
 
 export class UsersRepository implements IUsersRepository{
 	constructor(private readonly queryHelper: IQueryHelper){}
 
 	async create(data: SignUp): Promise<IQueryResponse>{
-		const { name, email, password } = data;
-		const sql = `INSERT INTO "users" (name, email, password) VALUES ('$1', '$2', '$3')`;
-		return await this.queryHelper.query(sql, [name, email, password]);
+		const { name, email, password, picture } = data;
+		const sql = `INSERT INTO "users" (name, email, password, picture) VALUES ($1, $2, $3, $4)`;
+		return await this.queryHelper.query(sql, [name, email, password, picture]);
 	}
 
 	async getById(id: number): Promise<IQueryResponse>{

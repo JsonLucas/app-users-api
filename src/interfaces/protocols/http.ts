@@ -1,4 +1,4 @@
-import { IGenericObject } from "./generic-object";
+import { IGenericObject } from "../generic-object";
 
 export interface httpRequest{
 	body: IGenericObject,
