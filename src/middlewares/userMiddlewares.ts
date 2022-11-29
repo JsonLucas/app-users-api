@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { SignInSchema, SignUpSchema } from '../utils/schemas';
+import { SignInSchema, SignUpSchema, ValidPictureSchema } from '../utils/schemas';
 import { Validator } from '../utils/validator';
 
 export const createUserMiddleware = async (req: Request, res: Response, next: NextFunction) => {
@@ -19,5 +19,14 @@ export const signInMiddleware = async (req: Request, res: Response, next: NextFu
 
 	const { email, password } = body;
 	res.locals.data = { email, password };
+	next();
+}
+
+export const updateProfilePictureMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+	const { body } = req;
+	const validator = new Validator();
+	await validator.validate(body, ValidPictureSchema);
+	
+	res.locals.picture = body.picture;
 	next();
 }

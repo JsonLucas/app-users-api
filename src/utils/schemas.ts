@@ -6,10 +6,14 @@ export const SignUpSchema = joi.object<ISignUpSchema>({
 	email: joi.string().email().required(),
 	password: joi.string().min(6).required(),
 	confirmPassword: joi.ref('password'),
-	picture: joi.binary()
+	picture: joi.string()
 });
 
 export const SignInSchema = joi.object<Login>({
 	email: joi.string().email().required(),
 	password: joi.string().required()
+});
+
+export const ValidPictureSchema = joi.object({
+	picture: joi.string().uri().required()
 });

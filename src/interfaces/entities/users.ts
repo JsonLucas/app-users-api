@@ -20,4 +20,5 @@ export interface IUsersRepository {
   create: (data: SignUp) => Promise<IQueryResponse>;
   getById: (id: number) => Promise<IQueryResponse>;
   getByEmail: (email: string) => Promise<IQueryResponse>;
+  updateProfilePicture: (userId: number, profilePicture: string) => Promise<IQueryResponse>
 }

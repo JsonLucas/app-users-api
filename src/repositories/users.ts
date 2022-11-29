@@ -20,4 +20,10 @@ export class UsersRepository implements IUsersRepository{
 		const sql = `SELECT * FROM "users" WHERE "email"=$1`;
 		return await this.queryHelper.query(sql, [email]);
 	}
+
+	async updateProfilePicture(userId: number, profilePicture: string) {
+		const sql = `UPDATE users SET picture=$1 WHERE id=$2`;
+		return await this.queryHelper.query(sql, [profilePicture, userId]);
+	}
+
 }

@@ -20,7 +20,7 @@ export const signInController = async (req: Request, res: Response) => {
 	const userServices = new UserServices(new UsersRepository(new QueryHelper()));
 	const { id, password } = await userServices.getByEmail(data.email);
 	const crypt = new Crypt();
-	if(!crypt.compare(password, data.password)) throw { code: 401, error: 'incorrect password' };
+	if(!crypt.compare(password, data.password)) throw { code: 401, error: 'incorrect email or password' };
 	
 	const token = new Token();
 	const generatedToken = token.generate(id);
@@ -32,4 +32,11 @@ export const getProfileController = async (req: Request, res: Response) => {
 	const userServices = new UserServices(new UsersRepository(new QueryHelper()));
 	const user = await userServices.getById(userId);
 	res.status(200).send(user);
+}
+
+export const updateProfilePictureController = async (req: Request, res: Response) => {
+	const { userId, picture } = res.locals;
+	const userServices = new UserServices(new UsersRepository(new QueryHelper()));
+	await userServices.updateProfilePicture(userId, picture);
+	res.sendStatus(204);
 }

@@ -5,6 +5,7 @@ export interface IUserServices{
 	create: (body: SignUp) => Promise<IUsers>,
 	getById: (id: number) => Promise<IUsers>,
 	getByEmail: (email: string) => Promise<IUsers | any>,
+	updateProfilePicture: (userId: number, profilePicture: string) => Promise<any>
 } 
 
 export class UserServices implements IUserServices {
@@ -30,5 +31,13 @@ export class UserServices implements IUserServices {
 		const { result } = await this.userRepository.getByEmail(email);
 		if(!result) throw { code: 404, error: 'user not found' };
 		return result[0] as IUsers;
+	}
+
+	async updateProfilePicture (userId: number, profilePicture: string): Promise<any>{
+		const { result } = await this.userRepository.getById(userId);
+		if(!result) throw { code: 404, error: 'user not found.' };
+
+		const update = await this.userRepository.updateProfilePicture(userId, profilePicture);
+		return update.rowCount;
 	}
 }
