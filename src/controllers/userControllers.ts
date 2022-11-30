@@ -18,7 +18,7 @@ export const createUserController = async (req: Request, res: Response) => {
 export const signInController = async (req: Request, res: Response) => {
 	const { data } = res.locals;
 	const userServices = new UserServices(new UsersRepository(new QueryHelper()));
-	const { id, password } = await userServices.getByEmail(data.email);
+	const { id, password, picture, name } = await userServices.getByEmail(data.email);
 	const crypt = new Crypt();
 	if(!crypt.compare(password, data.password)) throw { code: 401, error: 'incorrect email or password' };
 	
