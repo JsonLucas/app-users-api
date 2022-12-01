@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "nodemon",
     "start": "node ./dist/server.js",
-    "test": "test -i"
+    "test": "jest -i"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.1",

@@ -1,0 +1,26 @@
+name: pipe-app-users
+
+on:
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# env:
+#   DB_URL: ${{secrets.DATABSE_URL}}
+#   PORT: ${{secrets.PORT}}
+#   HOST: ${{secrets.DATABASE_HOST}}
+#   USER: ${{secrets.DATABASE_USER}}
+#   PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+#   DB_NAME: ${{secrets.DATABASE_NAME}}
+#   DB_PORT: ${{secrets.DATABASE_PORT}}
+#   JWT_SECRET: ${{secrets.JWT_SECRET}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Run tests
+    run: yarn test
+    # steps:
+    #   - uses: actions/checkout@v3
+    #   - uses: ./.github/actions/action
