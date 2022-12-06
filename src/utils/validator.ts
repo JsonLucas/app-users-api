@@ -1,4 +1,5 @@
 import { IGenericObject } from "../interfaces/generic-object";
+import { CustomError } from "../errors/constraints/messages";
 import Joi from "joi";
 
 export interface IValidator<S, O> {
@@ -17,7 +18,7 @@ export class Validator
       await schema.validateAsync(object, options);
     } catch (e: any) {
       console.log(e);
-      throw { code: 422, error: e.message };
+      throw CustomError(422, e.message);
     }
   }
 }

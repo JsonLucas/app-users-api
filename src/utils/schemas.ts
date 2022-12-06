@@ -15,5 +15,5 @@ export const SignInSchema = joi.object<Login>({
 });
 
 export const ValidPictureSchema = joi.object({
-	picture: joi.string().uri().required()
+	picture: joi.string().required()
 });

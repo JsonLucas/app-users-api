@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { IncorrectCredentials } from "../errors/constraints/messages";
 import { Crypt } from "../helpers/crypt";
 import { QueryHelper } from "../helpers/dbQueries";
 import { UsersRepository } from "../repositories/users";
@@ -20,7 +21,7 @@ export const signInController = async (req: Request, res: Response) => {
 	const userServices = new UserServices(new UsersRepository(new QueryHelper()));
 	const { id, password, picture, name } = await userServices.getByEmail(data.email);
 	const crypt = new Crypt();
-	if(!crypt.compare(password, data.password)) throw { code: 401, error: 'incorrect email or password' };
+	if(!crypt.compare(password, data.password)) throw IncorrectCredentials
 	
 	const token = new Token();
 	const generatedToken = token.generate(id);

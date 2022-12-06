@@ -5,7 +5,7 @@ export interface IUsers {
   name: string;
   email: string;
   password: string;
-  picture?: string | Buffer;
+  picture?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
