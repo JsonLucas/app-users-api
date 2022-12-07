@@ -3,7 +3,7 @@ import { CustomError } from "../errors/constraints/messages";
 import Joi from "joi";
 
 export interface IValidator<S, O> {
-  validate: (object: IGenericObject, schema: S, options?: O) => Promise<void>;
+  validate: (object: IGenericObject, schema: S, options?: O) => Promise<boolean>;
 }
 
 export class Validator
@@ -13,9 +13,10 @@ export class Validator
     object: IGenericObject,
     schema: Joi.ObjectSchema,
     options?: Joi.AsyncValidationOptions
-  ): Promise<void> {
+  ): Promise<boolean> {
     try {
       await schema.validateAsync(object, options);
+	  return true;
     } catch (e: any) {
       console.log(e);
       throw CustomError(422, e.message);

@@ -23,7 +23,7 @@ export class UsersRepository implements IUsersRepository{
 
 	async updateProfilePicture(userId: number, profilePicture: string) {
 		const updated = new Date();
-		const sql = `UPDATE users SET picture=$1, updatedAt=$2 WHERE id=$3`;
+		const sql = `UPDATE users SET picture=$1, "updatedAt"=$2 WHERE id=$3`;
 		return await this.queryHelper.query(sql, [profilePicture, updated, userId]);
 	}
 
