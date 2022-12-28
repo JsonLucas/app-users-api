@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
-	"dev:docker": "yarn prisma generate && yarn prisma db pull && nodemon",
+    "dev:docker": "yarn prisma generate && yarn prisma db pull && nodemon",
     "start": "node ./dist/server.js",
     "test": "jest -i"
   },
@@ -40,6 +40,7 @@
     "cross-env": "^7.0.3",
     "dotenv-cli": "^6.0.0",
     "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
     "supertest": "^6.3.2",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.6.0",
