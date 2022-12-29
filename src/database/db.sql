@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS app_users;
-CREATE DATABASE app_users;
+-- DROP DATABASE IF EXISTS app_users;
+-- CREATE DATABASE app_users;
 CREATE TABLE "users" (
 	"id" SERIAL PRIMARY KEY,
 	"name" TEXT NOT NULL,

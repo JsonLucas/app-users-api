@@ -7,6 +7,11 @@ Projeto construído com [NodeJS](https://nodejs.org/docs/latest-v17.x/api/) v17.
 - Gerenciador de pacotes **(npm ou yarn)**
 - [Postgres](https://www.postgresql.org/download/)
 - [Docker](https://www.docker.com/products/docker-desktop/)
+- [Postman](https://www.postman.com/downloads/)
+
+# Documentação da API
+
+* Para ver a documentação de todos os endpoints da api, acesse por meio do protocolo `GET` a url `http://localhost:{porta}/api-docs` 
 
 # Setup do projeto
 
